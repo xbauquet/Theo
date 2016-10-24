@@ -3,6 +3,7 @@
 buildscript {
     repositories {
         jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.1'
@@ -13,9 +14,15 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        mavenCentral()
     }
+    group = GROUP
+    version = VERSION_NAME
+
+    apply plugin: 'maven'
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+ext {
+    compileSdkVersion = 24
+    buildToolsVersion = '24.0.3'
 }
