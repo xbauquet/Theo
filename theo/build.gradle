@@ -1,7 +1,7 @@
+import com.android.build.gradle.LibraryPlugin
 import org.aspectj.bridge.IMessage
 import org.aspectj.bridge.MessageHandler
 import org.aspectj.tools.ajc.Main
-import com.android.build.gradle.LibraryPlugin
 
 plugins {
     id "com.github.dcendents.android-maven" version "1.5"

@@ -1,6 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xavierbauquet.theo">
+<manifest package="com.xavierbauquet.theo">
 
-    <application/>
+    <application />
 
 </manifest>

@@ -1,3 +1,7 @@
+group = GROUP
+version = VERSION_NAME
+
+apply plugin: 'maven'
 apply plugin: 'groovy'
 
 dependencies {

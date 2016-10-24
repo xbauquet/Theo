@@ -1,7 +1,7 @@
 package com.xavierbauquet.theoproject;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @DummyAnnotation
-    public void forTest(){
+    public void forTest() {
         Log.e("ForTest", "ForTest method has been called");
     }
 }
