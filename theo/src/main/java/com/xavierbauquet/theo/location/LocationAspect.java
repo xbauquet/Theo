@@ -1,8 +1,10 @@
 package com.xavierbauquet.theo.location;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 
-import com.xavierbauquet.theo.Theo;
+import com.xavierbauquet.theo.permission.PermissionProvider;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -22,13 +24,17 @@ public class LocationAspect {
 
     @Around("accessCoarseLocation()")
     public Object accessCoarseLocationAspect(ProceedingJoinPoint joinPoint) throws Throwable {
-        Theo.getPermissionProvider().requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION});
+        Context context = (Context) joinPoint.getTarget();
+        Activity activity = (Activity) joinPoint.getTarget();
+        new PermissionProvider(context, activity).requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION});
         return joinPoint.proceed();
     }
 
     @Around("accessFineLocation()")
     public Object accessFineLocationAspect(ProceedingJoinPoint joinPoint) throws Throwable {
-        Theo.getPermissionProvider().requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION});
+        Context context = (Context) joinPoint.getTarget();
+        Activity activity = (Activity) joinPoint.getTarget();
+        new PermissionProvider(context, activity).requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION});
         return joinPoint.proceed();
     }
 }
