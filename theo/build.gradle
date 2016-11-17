@@ -6,17 +6,28 @@ import org.aspectj.tools.ajc.Main
 plugins {
     id "com.github.dcendents.android-maven" version "1.5"
 }
+
+group = GROUP
+version = THEO_VERSION
+
 apply plugin: 'com.android.library'
 
 
 dependencies {
     testCompile 'junit:junit:4.12'
     compile 'org.aspectj:aspectjrt:1.8.6'
+    compile "com.android.support:appcompat-v7:24.2.1"
+    compile "com.android.support:design:24.2.1"
 }
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 24
+    }
 
     buildTypes {
         release {

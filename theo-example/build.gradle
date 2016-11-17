@@ -5,7 +5,7 @@ buildscript {
             jcenter()
             mavenLocal()
         }
-        classpath 'com.xavierbauquet.theo:theo-plugin:1.0.0'
+        classpath "com.xavierbauquet.theo:theo-plugin:${THEO_VERSION}"
     }
 }
 

@@ -1,5 +1,5 @@
 group = GROUP
-version = VERSION_NAME
+version = THEO_VERSION
 
 apply plugin: 'maven'
 apply plugin: 'groovy'

@@ -1,8 +1,13 @@
 package com.xavierbauquet.theo.location;
 
-/**
- * Created by Work on 24/10/2016.
- */
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
-public class AccessFineLocation {
+import static java.lang.annotation.ElementType.CONSTRUCTOR;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.RetentionPolicy.CLASS;
+
+@Retention(CLASS)
+@Target({METHOD, CONSTRUCTOR})
+public @interface AccessFineLocation {
 }

@@ -1,79 +1,79 @@
 package com.xavierbauquet.theo.permission;
 
-import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.xavierbauquet.theo.TheoListener;
 
-public class PermissionProvider {
-    final private int REQUEST_CODE = 124;
+import java.util.ArrayList;
+import java.util.List;
+
+public class PermissionProvider implements ActivityCompat.OnRequestPermissionsResultCallback {
+    final private int REQUEST_CODE = 987;
 
     private Context context;
-    private String[] permissions;
+    private Activity activity;
+    private TheoListener listener;
 
-    public PermissionProvider(Context context) {
-        this.context = context;
+    public PermissionProvider() {
     }
 
-    public void setPermissions(String[] permissions) {
-        this.permissions = permissions;
-    }
-
-    public void requestPermissions() {
+    public void requestPermissions(String[] permissions) {
         List<String> permissionsToCheck = new ArrayList<>();
+
+        // Get the list of requested permissions that are not permission granted
         for (String permission : permissions) {
             if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
                 permissionsToCheck.add(permission);
             }
         }
+
+        // Resquest the permission
         if (!permissionsToCheck.isEmpty() && Build.VERSION.SDK_INT >= 23) {
-            String[] permissions = permissionsToCheck.toArray(new String[permissionsToCheck.size()]);
-            //activity.requestPermissions(permissions, REQUEST_CODE);
+            String[] permissionsToRequest = permissionsToCheck.toArray(new String[permissionsToCheck.size()]);
+            activity.requestPermissions(permissionsToRequest, REQUEST_CODE);
         }
     }
 
-    public boolean onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case REQUEST_CODE: {
-                Map<String, Integer> perms = new HashMap<>();
-                // initialise
-                perms.put(Manifest.permission.ACCESS_FINE_LOCATION, PackageManager.PERMISSION_GRANTED);
-                // Fill with results
                 for (int i = 0; i < permissions.length; i++) {
-                    perms.put(permissions[i], grantResults[i]);
+                    if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                        listener.onPermissionRequestRefused(permissions[i]);
+                    }
                 }
-                // Check for ACCESS_FINE_LOCATION
-                return perms.get(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
             }
-            default:
-                return false;
         }
     }
 
-    /*public boolean checkLocationPermissionWithSnackBar() {
-        if (ActivityCompat.checkSelfPermission(context.getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            if (activity != null) {
-                snackbar.show();
-            }
-            return false;
-        } else {
-            return true;
-        }
-    }*/
+    public Context getContext() {
+        return context;
+    }
 
-    /*public boolean checkPermission() {
-        if (ActivityCompat.checkSelfPermission(context.getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return false;
-        } else {
-            return true;
-        }
-    }*/
+    public void setContext(Context context) {
+        this.context = context;
+    }
 
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
+
+    public TheoListener getListener() {
+        return listener;
+    }
+
+    public void setListener(TheoListener listener) {
+        this.listener = listener;
+    }
 }

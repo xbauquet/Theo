@@ -10,6 +10,15 @@ import org.gradle.api.Project
 import org.gradle.api.tasks.compile.JavaCompile
 
 class TheoPlugin implements Plugin<Project> {
+
+    // Allow to read the gradle.properties
+    Properties properties = new Properties()
+    File propertiesFile = new File('gradle.properties')
+    def load = propertiesFile.withInputStream {
+        properties.load(it)
+    }
+    def version = properties.getProperty("THEO_VERSION")
+
     @Override
     void apply(Project project) {
         def hasApp = project.plugins.withType(AppPlugin)
@@ -28,7 +37,7 @@ class TheoPlugin implements Plugin<Project> {
 
         project.dependencies {
             compile 'org.aspectj:aspectjrt:1.8.6'
-            compile 'com.xavierbauquet.theo:theo:1.0.0'
+            compile "com.xavierbauquet.theo:theo:${version}"
         }
 
         variants.all { variant ->
