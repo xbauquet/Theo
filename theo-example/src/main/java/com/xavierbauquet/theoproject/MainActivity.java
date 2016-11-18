@@ -10,6 +10,7 @@ import android.view.View;
 import com.xavierbauquet.theo.camera.Camera;
 import com.xavierbauquet.theo.location.AccessCoarseLocation;
 import com.xavierbauquet.theo.location.AccessFineLocation;
+import com.xavierbauquet.theo.microphone.RecordAudio;
 
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
 
@@ -62,6 +63,11 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     @Camera
     private void cameraMethod(){
         Log.e(THEO_TAG, "cameraMethod called");
+    }
+
+    @RecordAudio
+    private void microphoneMethod(){
+        Log.e(THEO_TAG, "microphoneMethod called");
     }
 
     @AccessFineLocation

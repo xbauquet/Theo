@@ -1,14 +1,12 @@
 package com.xavierbauquet.theo.location;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
 
-import com.xavierbauquet.theo.permission.PermissionProvider;
+import com.xavierbauquet.theo.Utils;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
@@ -22,19 +20,17 @@ public class LocationAspect {
     public void accessFineLocation() {
     }
 
-    @Around("accessCoarseLocation()")
-    public Object accessCoarseLocationAspect(ProceedingJoinPoint joinPoint) throws Throwable {
-        Context context = (Context) joinPoint.getTarget();
-        Activity activity = (Activity) joinPoint.getTarget();
-        new PermissionProvider(context, activity).requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION});
-        return joinPoint.proceed();
+    @Pointcut("within(android.app.Activity+)")
+    public void withinActivity() {
     }
 
-    @Around("accessFineLocation()")
-    public Object accessFineLocationAspect(ProceedingJoinPoint joinPoint) throws Throwable {
-        Context context = (Context) joinPoint.getTarget();
-        Activity activity = (Activity) joinPoint.getTarget();
-        new PermissionProvider(context, activity).requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION});
-        return joinPoint.proceed();
+    @Before("accessCoarseLocation() && withinActivity()")
+    public void accessCoarseLocationAspect(JoinPoint joinPoint) throws Throwable {
+        Utils.askSinglePermissionToActivity(joinPoint, Manifest.permission.ACCESS_COARSE_LOCATION);
+    }
+
+    @Before("accessFineLocation() && withinActivity()")
+    public void accessFineLocationAspect(JoinPoint joinPoint) throws Throwable {
+        Utils.askSinglePermissionToActivity(joinPoint, Manifest.permission.ACCESS_FINE_LOCATION);
     }
 }

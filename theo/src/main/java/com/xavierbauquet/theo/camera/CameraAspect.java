@@ -1,28 +1,27 @@
 package com.xavierbauquet.theo.camera;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
 
-import com.xavierbauquet.theo.permission.PermissionProvider;
+import com.xavierbauquet.theo.Utils;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class CameraAspect {
 
-    @Pointcut("execution(@com.xavierbauquet.theo.camera.Camera * *(..)) && within(android.app.Activity+)")
+    @Pointcut("execution(@com.xavierbauquet.theo.camera.Camera * *(..))")
     public void camera() {
     }
 
-    @Around("camera()")
-    public Object aspectMethod(ProceedingJoinPoint joinPoint) throws Throwable {
-        Context context = (Context) joinPoint.getTarget();
-        Activity activity = (Activity) joinPoint.getTarget();
-        new PermissionProvider(context, activity).requestPermissions(new String[]{Manifest.permission.CAMERA});
-        return joinPoint.proceed();
+    @Pointcut("within(android.app.Activity+)")
+    public void withinActivity() {
+    }
+
+    @Before("camera() && withinActivity()")
+    public void cameraAspect(JoinPoint joinPoint) throws Throwable {
+        Utils.askSinglePermissionToActivity(joinPoint, Manifest.permission.CAMERA);
     }
 }

@@ -1,6 +1,4 @@
-package com.xavierbauquet.theo.camera;
-
-import android.Manifest;
+package com.xavierbauquet.theo.microphone;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -11,5 +9,5 @@ import static java.lang.annotation.RetentionPolicy.CLASS;
 
 @Retention(CLASS)
 @Target({METHOD, CONSTRUCTOR})
-public @interface Camera {
+public @interface RecordAudio {
 }
