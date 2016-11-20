@@ -17,4 +17,8 @@ public class Theo {
             new PermissionProvider(context, activity).requestPermissions(new String[]{permission});
         }
     }
+
+    public static boolean isPermissionGranted(Context context, String permission){
+        return new PermissionProvider(context, null).isPermissionGranted(permission);
+    }
 }

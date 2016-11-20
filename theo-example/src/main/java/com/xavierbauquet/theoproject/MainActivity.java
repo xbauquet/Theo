@@ -1,12 +1,15 @@
 package com.xavierbauquet.theoproject;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import com.xavierbauquet.theo.Theo;
 import com.xavierbauquet.theo.annotations.AccessCoarseLocation;
 import com.xavierbauquet.theo.annotations.AccessFineLocation;
 import com.xavierbauquet.theo.annotations.Camera;
@@ -21,6 +24,13 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.is_camera_permission_granted).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, String.valueOf(Theo.isPermissionGranted(MainActivity.this, Manifest.permission.CAMERA)), Toast.LENGTH_LONG).show();
+            }
+        });
 
         findViewById(R.id.coarse_location_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,11 +74,6 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     @Camera
     private void cameraMethod(){
         Log.e(THEO_TAG, "cameraMethod called");
-    }
-
-    @RecordAudio
-    private void microphoneMethod(){
-        Log.e(THEO_TAG, "microphoneMethod called");
     }
 
     @AccessFineLocation

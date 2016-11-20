@@ -12,6 +12,12 @@
     tools:context="com.xavierbauquet.theoproject.MainActivity">
 
     <Button
+        android:id="@+id/is_camera_permission_granted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Is Camera Location Granted" />
+
+    <Button
         android:id="@+id/coarse_location_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
