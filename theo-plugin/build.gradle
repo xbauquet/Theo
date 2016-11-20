@@ -1,6 +1,8 @@
 group = GROUP
 version = THEO_VERSION
 
+project.ext.set("theoVersion", THEO_VERSION)
+
 apply plugin: 'maven'
 apply plugin: 'groovy'
 

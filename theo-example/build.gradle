@@ -5,12 +5,12 @@ buildscript {
             jcenter()
             mavenLocal()
         }
-        classpath "com.xavierbauquet.theo:theo-plugin:${THEO_VERSION}"
+        //classpath "com.xavierbauquet.theo:theo-plugin:${THEO_VERSION}"
     }
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.xavierbauquet.theo'
+//apply plugin: 'com.xavierbauquet.theo'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
