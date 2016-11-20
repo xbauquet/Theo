@@ -7,10 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.xavierbauquet.theo.camera.Camera;
-import com.xavierbauquet.theo.location.AccessCoarseLocation;
-import com.xavierbauquet.theo.location.AccessFineLocation;
-import com.xavierbauquet.theo.microphone.RecordAudio;
+import com.xavierbauquet.theo.annotations.AccessCoarseLocation;
+import com.xavierbauquet.theo.annotations.AccessFineLocation;
+import com.xavierbauquet.theo.annotations.Camera;
+import com.xavierbauquet.theo.annotations.RecordAudio;
+
 
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
 

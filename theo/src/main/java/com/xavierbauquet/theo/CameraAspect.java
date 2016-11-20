@@ -1,8 +1,6 @@
-package com.xavierbauquet.theo.camera;
+package com.xavierbauquet.theo;
 
 import android.Manifest;
-
-import com.xavierbauquet.theo.Utils;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -12,7 +10,7 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class CameraAspect {
 
-    @Pointcut("execution(@com.xavierbauquet.theo.camera.Camera * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.Camera * *(..))")
     public void camera() {
     }
 
@@ -22,6 +20,6 @@ public class CameraAspect {
 
     @Before("camera() && withinActivity()")
     public void cameraAspect(JoinPoint joinPoint) throws Throwable {
-        Utils.askSinglePermissionToActivity(joinPoint, Manifest.permission.CAMERA);
+        Theo.askSinglePermissionToActivity(joinPoint, Manifest.permission.CAMERA);
     }
 }

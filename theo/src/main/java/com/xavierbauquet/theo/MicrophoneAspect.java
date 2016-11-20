@@ -1,8 +1,6 @@
-package com.xavierbauquet.theo.microphone;
+package com.xavierbauquet.theo;
 
 import android.Manifest;
-
-import com.xavierbauquet.theo.Utils;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,7 +9,7 @@ import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class MicrophoneAspect {
-    @Pointcut("execution(@com.xavierbauquet.theo.microphone.RecordAudio * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.RecordAudio * *(..))")
     public void microphone() {
     }
 
@@ -21,6 +19,6 @@ public class MicrophoneAspect {
 
     @Before("microphone() && withinActivity()")
     public void microphoneAspect(JoinPoint joinPoint) throws Throwable {
-        Utils.askSinglePermissionToActivity(joinPoint, Manifest.permission.RECORD_AUDIO);
+        Theo.askSinglePermissionToActivity(joinPoint, Manifest.permission.RECORD_AUDIO);
     }
 }

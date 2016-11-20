@@ -1,4 +1,4 @@
-package com.xavierbauquet.theo.permission;
+package com.xavierbauquet.theo;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,22 +8,19 @@ import android.support.v4.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.jar.Manifest;
 
-public class PermissionProvider{
-    final private int REQUEST_CODE = 987;
+class PermissionProvider{
 
     private Context context;
     private Activity activity;
 
-    public PermissionProvider() {
-    }
-
-    public PermissionProvider(Context context, Activity activity) {
+    PermissionProvider(Context context, Activity activity) {
         this.context = context;
         this.activity = activity;
     }
 
-    public void requestPermissions(String[] permissions) {
+   void requestPermissions(String[] permissions) {
         List<String> permissionsToCheck = new ArrayList<>();
 
         // Get the list of requested permissions that are not permission granted
@@ -36,23 +33,23 @@ public class PermissionProvider{
         // Request the permissions
         if (!permissionsToCheck.isEmpty() && Build.VERSION.SDK_INT >= 23) {
             String[] permissionsToRequest = permissionsToCheck.toArray(new String[permissionsToCheck.size()]);
-            activity.requestPermissions(permissionsToRequest, REQUEST_CODE);
+            activity.requestPermissions(permissionsToRequest, Theo.REQUEST_CODE);
         }
     }
 
-    public Context getContext() {
+    Context getContext() {
         return context;
     }
 
-    public void setContext(Context context) {
+    void setContext(Context context) {
         this.context = context;
     }
 
-    public Activity getActivity() {
+    Activity getActivity() {
         return activity;
     }
 
-    public void setActivity(Activity activity) {
+    void setActivity(Activity activity) {
         this.activity = activity;
     }
 

@@ -1,8 +1,6 @@
-package com.xavierbauquet.theo.contacts;
+package com.xavierbauquet.theo;
 
 import android.Manifest;
-
-import com.xavierbauquet.theo.Utils;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,15 +9,15 @@ import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class ContactsAspect {
-    @Pointcut("execution(@com.xavierbauquet.theo.contacts.GetAccounts * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.GetAccounts * *(..))")
     public void getAccounts() {
     }
 
-    @Pointcut("execution(@com.xavierbauquet.theo.contacts.ReadContacts * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.ReadContacts * *(..))")
     public void readContacts() {
     }
 
-    @Pointcut("execution(@com.xavierbauquet.theo.contacts.WriteContacts * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.WriteContacts * *(..))")
     public void writeContacts() {
     }
 
@@ -29,16 +27,16 @@ public class ContactsAspect {
 
     @Before("getAccounts() && withinActivity()")
     public void getAccountsAspect(JoinPoint joinPoint) throws Throwable {
-        Utils.askSinglePermissionToActivity(joinPoint, Manifest.permission.GET_ACCOUNTS);
+        Theo.askSinglePermissionToActivity(joinPoint, Manifest.permission.GET_ACCOUNTS);
     }
 
     @Before("readContacts() && withinActivity()")
     public void readContactsAspect(JoinPoint joinPoint) throws Throwable {
-        Utils.askSinglePermissionToActivity(joinPoint, Manifest.permission.READ_CONTACTS);
+        Theo.askSinglePermissionToActivity(joinPoint, Manifest.permission.READ_CONTACTS);
     }
 
     @Before("writeContacts() && withinActivity()")
     public void writeContactsAspect(JoinPoint joinPoint) throws Throwable {
-        Utils.askSinglePermissionToActivity(joinPoint, Manifest.permission.WRITE_CONTACTS);
+        Theo.askSinglePermissionToActivity(joinPoint, Manifest.permission.WRITE_CONTACTS);
     }
 }

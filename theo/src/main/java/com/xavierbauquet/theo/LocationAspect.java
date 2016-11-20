@@ -1,8 +1,6 @@
-package com.xavierbauquet.theo.location;
+package com.xavierbauquet.theo;
 
 import android.Manifest;
-
-import com.xavierbauquet.theo.Utils;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -12,11 +10,11 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class LocationAspect {
 
-    @Pointcut("execution(@com.xavierbauquet.theo.location.AccessCoarseLocation * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.AccessCoarseLocation * *(..))")
     public void accessCoarseLocation() {
     }
 
-    @Pointcut("execution(@com.xavierbauquet.theo.location.AccessFineLocation * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.AccessFineLocation * *(..))")
     public void accessFineLocation() {
     }
 
@@ -26,11 +24,11 @@ public class LocationAspect {
 
     @Before("accessCoarseLocation() && withinActivity()")
     public void accessCoarseLocationAspect(JoinPoint joinPoint) throws Throwable {
-        Utils.askSinglePermissionToActivity(joinPoint, Manifest.permission.ACCESS_COARSE_LOCATION);
+        Theo.askSinglePermissionToActivity(joinPoint, Manifest.permission.ACCESS_COARSE_LOCATION);
     }
 
     @Before("accessFineLocation() && withinActivity()")
     public void accessFineLocationAspect(JoinPoint joinPoint) throws Throwable {
-        Utils.askSinglePermissionToActivity(joinPoint, Manifest.permission.ACCESS_FINE_LOCATION);
+        Theo.askSinglePermissionToActivity(joinPoint, Manifest.permission.ACCESS_FINE_LOCATION);
     }
 }

@@ -1,8 +1,8 @@
-package com.xavierbauquet.theo.calendar;
+package com.xavierbauquet.theo;
 
 import android.Manifest;
 
-import com.xavierbauquet.theo.Utils;
+import com.xavierbauquet.theo.Theo;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -12,11 +12,11 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class CalendarAspect {
 
-    @Pointcut("execution(@com.xavierbauquet.theo.calendar.ReadCalendar * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.ReadCalendar * *(..))")
     public void readCalendar() {
     }
 
-    @Pointcut("execution(@com.xavierbauquet.theo.calendar.WriteCalendar * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.WriteCalendar * *(..))")
     public void writeCalendar() {
     }
 
@@ -26,12 +26,12 @@ public class CalendarAspect {
 
     @Before("readCalendar() && withinActivity()")
     public void readCalendarAspect(JoinPoint joinPoint) throws Throwable {
-        Utils.askSinglePermissionToActivity(joinPoint, Manifest.permission.READ_CALENDAR);
+        Theo.askSinglePermissionToActivity(joinPoint, Manifest.permission.READ_CALENDAR);
     }
 
     @Before("writeCalendar() && withinActivity()")
     public void writeCalendarAspect(JoinPoint joinPoint) throws Throwable {
-        Utils.askSinglePermissionToActivity(joinPoint, Manifest.permission.WRITE_CALENDAR);
+        Theo.askSinglePermissionToActivity(joinPoint, Manifest.permission.WRITE_CALENDAR);
     }
 
 }
