@@ -11,7 +11,7 @@ public void cameraMethod() {
 ```
 For the complete list of annotation see the `MainActivity` in `theo-example`
 
-Intallation
+Gradle
 --------
 
 ```groovy
