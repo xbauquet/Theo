@@ -20,7 +20,7 @@ class TheoPlugin implements Plugin<Project> {
     }
     def version = properties.getProperty("THEO_VERSION") */
 
-    def version = '1.1.0'
+    def version = '1.1.2'
 
     @Override
     void apply(Project project) {
@@ -41,6 +41,15 @@ class TheoPlugin implements Plugin<Project> {
         project.dependencies {
             compile 'org.aspectj:aspectjrt:1.8.6'
             compile "com.xavierbauquet.theo:theo:${version}"
+        }
+
+        project.repositories{
+            maven {
+                url  "http://xavierbauquet.bintray.com/android"
+            }
+
+            // Used for development
+            mavenLocal()
         }
 
         variants.all { variant ->
