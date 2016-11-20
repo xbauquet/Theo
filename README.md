@@ -1,5 +1,5 @@
 # Theo
-Theo is a plugin that provide annotations for each 'dangerous android permission'.
+Theo is a plugin that provides annotations for each 'dangerous android permission'.
 
 Use
 --------
