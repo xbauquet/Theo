@@ -2,26 +2,20 @@ package com.xavierbauquet.theo;
 
 import android.Manifest;
 
-import com.xavierbauquet.theo.Theo;
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
-public class CalendarAspect {
+public class CalendarAspect extends com.xavierbauquet.theo.Aspect {
 
-    @Pointcut("execution(@com.xavierbauquet.theo.annotations.ReadCalendar * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.calendar.ReadCalendar * *(..))")
     public void readCalendar() {
     }
 
-    @Pointcut("execution(@com.xavierbauquet.theo.annotations.WriteCalendar * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.calendar.WriteCalendar * *(..))")
     public void writeCalendar() {
-    }
-
-    @Pointcut("within(android.app.Activity+)")
-    public void withinActivity() {
     }
 
     @Before("readCalendar() && withinActivity()")

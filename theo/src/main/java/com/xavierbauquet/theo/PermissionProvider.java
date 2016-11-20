@@ -8,9 +8,8 @@ import android.support.v4.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.jar.Manifest;
 
-class PermissionProvider{
+class PermissionProvider {
 
     private Context context;
     private Activity activity;
@@ -20,7 +19,7 @@ class PermissionProvider{
         this.activity = activity;
     }
 
-   void requestPermissions(String[] permissions) {
+    void requestPermissions(String[] permissions) {
         List<String> permissionsToCheck = new ArrayList<>();
 
         // Get the list of requested permissions that are not permission granted
@@ -37,7 +36,7 @@ class PermissionProvider{
         }
     }
 
-    boolean isPermissionGranted(String permission){
+    boolean isPermissionGranted(String permission) {
         return ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED;
     }
 

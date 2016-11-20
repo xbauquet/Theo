@@ -8,21 +8,17 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
-public class ContactsAspect {
-    @Pointcut("execution(@com.xavierbauquet.theo.annotations.GetAccounts * *(..))")
+public class ContactsAspect extends com.xavierbauquet.theo.Aspect {
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.contacts.GetAccounts * *(..))")
     public void getAccounts() {
     }
 
-    @Pointcut("execution(@com.xavierbauquet.theo.annotations.ReadContacts * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.contacts.ReadContacts * *(..))")
     public void readContacts() {
     }
 
-    @Pointcut("execution(@com.xavierbauquet.theo.annotations.WriteContacts * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.contacts.WriteContacts * *(..))")
     public void writeContacts() {
-    }
-
-    @Pointcut("within(android.app.Activity+)")
-    public void withinActivity() {
     }
 
     @Before("getAccounts() && withinActivity()")

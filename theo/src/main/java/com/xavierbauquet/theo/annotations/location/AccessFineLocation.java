@@ -1,4 +1,4 @@
-package com.xavierbauquet.theo.annotations;
+package com.xavierbauquet.theo.annotations.location;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -9,5 +9,5 @@ import static java.lang.annotation.RetentionPolicy.CLASS;
 
 @Retention(CLASS)
 @Target({METHOD, CONSTRUCTOR})
-public @interface AccessCoarseLocation {
+public @interface AccessFineLocation {
 }

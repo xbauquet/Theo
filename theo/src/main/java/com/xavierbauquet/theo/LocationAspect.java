@@ -8,18 +8,14 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
-public class LocationAspect {
+public class LocationAspect extends com.xavierbauquet.theo.Aspect {
 
-    @Pointcut("execution(@com.xavierbauquet.theo.annotations.AccessCoarseLocation * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.location.AccessCoarseLocation * *(..))")
     public void accessCoarseLocation() {
     }
 
-    @Pointcut("execution(@com.xavierbauquet.theo.annotations.AccessFineLocation * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.location.AccessFineLocation * *(..))")
     public void accessFineLocation() {
-    }
-
-    @Pointcut("within(android.app.Activity+)")
-    public void withinActivity() {
     }
 
     @Before("accessCoarseLocation() && withinActivity()")

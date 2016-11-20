@@ -8,13 +8,10 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
-public class MicrophoneAspect {
-    @Pointcut("execution(@com.xavierbauquet.theo.annotations.RecordAudio * *(..))")
-    public void microphone() {
-    }
+public class MicrophoneAspect extends com.xavierbauquet.theo.Aspect {
 
-    @Pointcut("within(android.app.Activity+)")
-    public void withinActivity() {
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.microphone.RecordAudio * *(..))")
+    public void microphone() {
     }
 
     @Before("microphone() && withinActivity()")

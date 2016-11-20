@@ -11,34 +11,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.xavierbauquet.theoproject.MainActivity">
 
-    <Button
-        android:id="@+id/is_camera_permission_granted"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Is Camera Location Granted" />
-
-    <Button
-        android:id="@+id/coarse_location_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Coarse Location" />
-
-    <Button
-        android:id="@+id/fine_location_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fine Location" />
-
-    <Button
-        android:id="@+id/camera"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Camera" />
-
-    <Button
-        android:id="@+id/fine_location_camera_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fine Location And Camera" />
+    <ListView
+       android:id="@+id/list"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
 
 </LinearLayout>

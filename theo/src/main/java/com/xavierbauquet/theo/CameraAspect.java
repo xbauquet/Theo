@@ -8,14 +8,10 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
-public class CameraAspect {
+public class CameraAspect extends com.xavierbauquet.theo.Aspect {
 
-    @Pointcut("execution(@com.xavierbauquet.theo.annotations.Camera * *(..))")
+    @Pointcut("execution(@com.xavierbauquet.theo.annotations.camera.Camera * *(..))")
     public void camera() {
-    }
-
-    @Pointcut("within(android.app.Activity+)")
-    public void withinActivity() {
     }
 
     @Before("camera() && withinActivity()")
