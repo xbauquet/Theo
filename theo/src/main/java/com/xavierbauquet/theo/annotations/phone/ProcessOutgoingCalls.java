@@ -7,6 +7,9 @@ import static java.lang.annotation.ElementType.CONSTRUCTOR;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.CLASS;
 
+/**
+ * Annotation throwing Process Outgoing Calls Permission request
+ */
 @Retention(CLASS)
 @Target({METHOD, CONSTRUCTOR})
 public @interface ProcessOutgoingCalls {

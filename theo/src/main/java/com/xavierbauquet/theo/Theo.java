@@ -22,19 +22,49 @@ public class Theo {
         }
     }
 
-    public static boolean checkPermission(Activity activity, String permission){
+    /**
+     * This method check if a permission is granted or not. If not it will throw a snackbar to allow the user to grant the permission
+     *
+     * @param activity ,   the activity that will be used has context and that will throw the snackbar
+     * @param permission , one of the dangerous permissions present in Manifest.permission
+     * @return true if the permission is granted
+     */
+    public static boolean checkPermission(Activity activity, String permission) {
         return checkPermission(activity, new String[]{permission}, true);
     }
 
-    public static boolean checkPermission(Activity activity, String[] permissions){
+    /**
+     * This method check if a list of permissions are granted or not. If not it will throw a snackbar to allow the user to grant the permissions
+     *
+     * @param activity ,    the activity that will be used has context and that will throw the snackbar
+     * @param permissions , a list of dangerous permissions present in Manifest.permission
+     * @return true if the permission is granted
+     */
+    public static boolean checkPermission(Activity activity, String[] permissions) {
         return checkPermission(activity, permissions, true);
     }
 
-    public static boolean checkPermission(Activity activity, String permission, boolean snackbar){
+    /**
+     * This method check if a permission is granted or not. If not it will throw a snackbar to allow the user to grant the permission
+     *
+     * @param activity ,   the activity that will be used has context and that will throw the snackbar
+     * @param permission , one of the dangerous permissions present in Manifest.permission
+     * @param snackbar ,   Put this boolean at false to avoid the snackbar. Default: true
+     * @return true if the permission is granted
+     */
+    public static boolean checkPermission(Activity activity, String permission, boolean snackbar) {
         return checkPermission(activity, new String[]{permission}, snackbar);
     }
 
-    public static boolean checkPermission(Activity activity, String[] permissions, boolean snackbar){
+    /**
+     * This method check if a list of permissions are granted or not. If not it will throw a snackbar to allow the user to grant the permissions
+     *
+     * @param activity ,    the activity that will be used has context and that will throw the snackbar
+     * @param permissions , a list of dangerous permissions present in Manifest.permission
+     * @param snackbar ,    Put this boolean at false to avoid the snackbar. Default: true
+     * @return true if the permission is granted
+     */
+    public static boolean checkPermission(Activity activity, String[] permissions, boolean snackbar) {
         return new PermissionProvider(activity, activity).isPermissionGranted(permissions, snackbar);
     }
 }

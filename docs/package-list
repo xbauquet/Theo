@@ -1,0 +1,11 @@
+com.xavierbauquet.theo
+com.xavierbauquet.theo.annotations
+com.xavierbauquet.theo.annotations.calendar
+com.xavierbauquet.theo.annotations.camera
+com.xavierbauquet.theo.annotations.contacts
+com.xavierbauquet.theo.annotations.location
+com.xavierbauquet.theo.annotations.microphone
+com.xavierbauquet.theo.annotations.phone
+com.xavierbauquet.theo.annotations.sensors
+com.xavierbauquet.theo.annotations.sms
+com.xavierbauquet.theo.annotations.storage
