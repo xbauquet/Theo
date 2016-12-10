@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Theo</string>
+    <string name="app_name" translatable="false">Theo</string>
+    <string name="snack_bar_text">Missing Permission</string>
+    <string name="snack_bar_button">Permission</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.xavierbauquet.theoproject;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.xavierbauquet.theo.Theo;
 import com.xavierbauquet.theo.annotations.calendar.ReadCalendar;
 import com.xavierbauquet.theo.annotations.calendar.WriteCalendar;
 import com.xavierbauquet.theo.annotations.camera.Camera;
@@ -70,6 +72,9 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         });
     }
 
+    public void showSnackBar(){
+        Theo.isPermissionGranted(this, Manifest.permission.ACCESS_FINE_LOCATION);
+    }
     @ReadCalendar
     public void readCalendarMethod() {
         Log.i(THEO_TAG, "ReadCalendarMethod called");

@@ -18,11 +18,19 @@ public class Theo {
         }
     }
 
-    public static boolean isPermissionGranted(Context context, String permission){
-        return new PermissionProvider(context, null).isPermissionGranted(permission);
+    public static boolean isPermissionGranted(Activity activity, String permission){
+        return isPermissionGranted(activity, new String[]{permission}, true);
     }
 
-    public static boolean isPermissionGranted(Context context, String[] permissions){
-        return new PermissionProvider(context, null).isPermissionGranted(permissions);
+    public static boolean isPermissionGranted(Activity activity, String[] permissions){
+        return isPermissionGranted(activity, permissions, true);
+    }
+
+    public static boolean isPermissionGranted(Activity activity, String permission, boolean snackbar){
+        return isPermissionGranted(activity, new String[]{permission}, snackbar);
+    }
+
+    public static boolean isPermissionGranted(Activity activity, String[] permissions, boolean snackbar){
+        return new PermissionProvider(activity, activity).isPermissionGranted(permissions, snackbar);
     }
 }
