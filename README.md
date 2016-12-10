@@ -1,9 +1,41 @@
 # Theo
+Theo is a plugin that provides annotations for each 'dangerous android permission'.
+
+Use
+--------
+```java
+@Camera
+public void cameraMethod() {
+    // Do something
+}
+```
+For the complete list of annotation see the `MainActivity` in `theo-example`
+
+Gradle
+--------
+
+```groovy
+buildscript {
+  repositories {
+    maven {
+            url  "http://xavierbauquet.bintray.com/android"
+    }
+  }
+
+  dependencies {
+    classpath 'com.xavierbauquet.theo:theo-plugin:1.1.2'
+  }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.xavierbauquet.theo'
+```
+
 
 License
 --------
 
-    Copyright 2013 Jake Wharton
+    Copyright 2016 Xavier Bauquet
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
