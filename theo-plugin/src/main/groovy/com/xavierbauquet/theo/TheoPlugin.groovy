@@ -11,7 +11,7 @@ import org.gradle.api.tasks.compile.JavaCompile
 
 class TheoPlugin implements Plugin<Project> {
 
-    def version = '1.2.0'
+    def version = '1.3.0'
 
     @Override
     void apply(Project project) {

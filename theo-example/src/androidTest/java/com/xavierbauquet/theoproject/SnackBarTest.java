@@ -38,7 +38,7 @@ public class SnackBarTest {
     @Test
     public void shouldShowSnackBar() throws Exception {
         if (Build.VERSION.SDK_INT >= 23) {
-            Theo.isPermissionGranted(activityRule.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
+            Theo.checkPermission(activityRule.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
             String snackBarText = activityRule.getActivity().getResources().getString(R.string.snack_bar_text);
             UiObject snackBar = device.findObject(new UiSelector().text(snackBarText));
             assertTrue(snackBar.exists());

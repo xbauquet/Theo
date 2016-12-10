@@ -3,6 +3,7 @@ package com.xavierbauquet.theoproject;
 import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresPermission;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     }
 
     public void showSnackBar(){
-        Theo.isPermissionGranted(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        Theo.checkPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
     }
     
     @ReadCalendar
@@ -210,4 +211,18 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         // Do something
     }
+
+    // Use to check lint warning "MissingPermission" that should not be shown
+    public void lintTestMethod(){
+        if(Theo.checkPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)) {
+            requiresLocationPermission();
+        }
+    }
+
+    @RequiresPermission(anyOf = {Manifest.permission.ACCESS_COARSE_LOCATION})
+    public void requiresLocationPermission(){
+
+    }
+
+
 }
