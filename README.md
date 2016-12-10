@@ -3,13 +3,33 @@ Theo is a plugin that provides annotations for each 'dangerous android permissio
 
 Use
 --------
+Use annotations to ask for permissions
+
 ```java
 @Camera
 public void cameraMethod() {
     // Do something
 }
+
+@Permissions({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA})
+public void permissionsMethod(){
+    // Do something
+}
 ```
 For the complete list of annotation see the `MainActivity` in `theo-example`
+
+Theo also provide methods to check if permissions are granted or not
+
+```java
+Theo.isPermissionGranted(activity, Manifest.permission.ACCESS_FINE_LOCATION);
+Theo.isPermissionGranted(activity, Manifest.permission.ACCESS_FINE_LOCATION, false);
+Theo.isPermissionGranted(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA});
+Theo.isPermissionGranted(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA}, false);
+```
+
+The last boolean is used to enable or disable the snack bar that is shown if a permission is not granted.
+
+![1]
 
 Gradle
 --------
@@ -23,7 +43,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.xavierbauquet.theo:theo-plugin:1.1.3'
+    classpath 'com.xavierbauquet.theo:theo-plugin:1.2.0'
   }
 }
 
@@ -48,3 +68,5 @@ License
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+[1]: ./gif/snackbar.gif

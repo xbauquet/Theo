@@ -41,7 +41,7 @@ import com.xavierbauquet.theo.annotations.storage.WriteExternalStorage;
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static final String THEO_TAG = "THEO";
-    private final String[] permissions = {"Read Calendar", "Write Calendar", "Camera"};
+    private final String[] permissions = {"Read Calendar", "Write Calendar", "Camera", "Show Snackbar"};
 
 
     @Override
@@ -62,11 +62,14 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                         break;
                     case 1:
                         // Write Calendar
-                        permissionsMethod();
+                        writeCalendarMethod();
                         break;
                     case 2:
                         // Camera
                         cameraMethod();
+                        break;
+                    case 3:
+                        showSnackBar();
                         break;
                 }
             }
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     public void showSnackBar(){
         Theo.isPermissionGranted(this, Manifest.permission.ACCESS_FINE_LOCATION);
     }
+    
     @ReadCalendar
     public void readCalendarMethod() {
         Log.i(THEO_TAG, "ReadCalendarMethod called");
