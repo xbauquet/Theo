@@ -11,10 +11,14 @@ public class Theo {
     final public static int REQUEST_CODE = 987;
 
     static void askSinglePermissionToActivity(JoinPoint joinPoint, String permission) {
+        askPermissionsToActivity(joinPoint, new String[]{permission});
+    }
+
+    static void askPermissionsToActivity(JoinPoint joinPoint, String[] permissions) {
         if (Build.VERSION.SDK_INT >= 23) {
             Context context = (Context) joinPoint.getTarget();
             Activity activity = (Activity) joinPoint.getTarget();
-            new PermissionProvider(context, activity).requestPermissions(new String[]{permission});
+            new PermissionProvider(context, activity).requestPermissions(permissions);
         }
     }
 

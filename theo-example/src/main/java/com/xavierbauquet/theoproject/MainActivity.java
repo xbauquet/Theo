@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.xavierbauquet.theo.Theo;
+import com.xavierbauquet.theo.annotations.Permissions;
 import com.xavierbauquet.theo.annotations.calendar.ReadCalendar;
 import com.xavierbauquet.theo.annotations.calendar.WriteCalendar;
 import com.xavierbauquet.theo.annotations.camera.Camera;
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                         break;
                     case 1:
                         // Write Calendar
-                        writeCalendarMethod();
+                        permissionsMethod();
                         break;
                     case 2:
                         // Camera
@@ -193,6 +194,11 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     @WriteExternalStorage
     public void writeExternalStorageMethod() {
         Log.i(THEO_TAG, "WriteExternalStorageMethod called");
+    }
+
+    @Permissions({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA})
+    public void permissionsMethod(){
+        Log.i(THEO_TAG, "PermissionsMethod called");
     }
 
     @Override
