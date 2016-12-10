@@ -21,4 +21,8 @@ public class Theo {
     public static boolean isPermissionGranted(Context context, String permission){
         return new PermissionProvider(context, null).isPermissionGranted(permission);
     }
+
+    public static boolean isPermissionGranted(Context context, String[] permissions){
+        return new PermissionProvider(context, null).isPermissionGranted(permissions);
+    }
 }

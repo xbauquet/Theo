@@ -37,7 +37,16 @@ class PermissionProvider {
     }
 
     boolean isPermissionGranted(String permission) {
-        return ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED;
+        return isPermissionGranted(new String[]{permission});
+    }
+
+    boolean isPermissionGranted(String[] permissions){
+        for(String permission : permissions){
+            if(ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED){
+                return false;
+            }
+        }
+        return true;
     }
 
     Context getContext() {
