@@ -11,16 +11,7 @@ import org.gradle.api.tasks.compile.JavaCompile
 
 class TheoPlugin implements Plugin<Project> {
 
-    // Allow to read the gradle.properties
-    // For Dev only
-    /* Properties properties = new Properties()
-    File propertiesFile = new File('gradle.properties')
-    def load = propertiesFile.withInputStream {
-        properties.load(it)
-    }
-    def version = properties.getProperty("THEO_VERSION") */
-
-    def version = '1.1.2'
+    def version = '1.1.3'
 
     @Override
     void apply(Project project) {
