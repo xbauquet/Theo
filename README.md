@@ -16,17 +16,22 @@ public void permissionsMethod(){
     // Do something
 }
 ```
+
 For the complete list of annotation see the `MainActivity` in `theo-example`
 
 Theo also provide methods to check if permissions are granted or not
 
 ```java
-Theo.isPermissionGranted(activity, Manifest.permission.ACCESS_FINE_LOCATION);
-Theo.isPermissionGranted(activity, Manifest.permission.ACCESS_FINE_LOCATION, false);
-Theo.isPermissionGranted(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA});
-Theo.isPermissionGranted(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA}, false);
-```
+Theo.checkPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION);
+Theo.checkPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION, false);
+Theo.checkPermission(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA});
+Theo.checkPermission(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA}, false);
 
+if(Theo.checkPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION);){
+    // do something
+}
+```
+This method is returning a boolean and can be used directly inside a if().
 The last boolean is used to enable or disable the snack bar that is shown if a permission is not granted.
 
 ![1]
@@ -43,7 +48,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.xavierbauquet.theo:theo-plugin:1.2.0'
+    classpath 'com.xavierbauquet.theo:theo-plugin:1.3.0'
   }
 }
 
