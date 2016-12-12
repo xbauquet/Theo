@@ -43,7 +43,7 @@ Gradle
 buildscript {
   repositories {
     maven {
-            url  "http://xavierbauquet.bintray.com/android"
+            url  "http://dl.bintray.com/xavier-bauquet/Android"
     }
   }
 
