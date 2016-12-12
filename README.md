@@ -48,7 +48,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.xavierbauquet.theo:theo-plugin:1.3.0'
+    classpath 'com.xavierbauquet.theo:theo-plugin:1.3.1'
   }
 }
 

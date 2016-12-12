@@ -11,7 +11,7 @@ import org.gradle.api.tasks.compile.JavaCompile
 
 class TheoPlugin implements Plugin<Project> {
 
-    def version = '1.3.0'
+    def version = '1.3.1'
 
     @Override
     void apply(Project project) {
@@ -36,7 +36,7 @@ class TheoPlugin implements Plugin<Project> {
 
         project.repositories{
             maven {
-                url  "http://xavierbauquet.bintray.com/android"
+                url  "http://dl.bintray.com/xavier-bauquet/Android"
             }
 
             // Used for development
