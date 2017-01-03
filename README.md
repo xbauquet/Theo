@@ -27,7 +27,7 @@ Theo.checkPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION, false);
 Theo.checkPermission(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA});
 Theo.checkPermission(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA}, false);
 
-if(Theo.checkPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION);){
+if(Theo.checkPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION)){
     // do something
 }
 ```
